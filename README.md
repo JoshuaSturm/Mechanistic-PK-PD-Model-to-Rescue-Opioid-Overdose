@@ -21,7 +21,7 @@ Model training simulations found in [Training](https://github.com/FDA/Mechanisti
 
 Prediction simulations found in [Prediction](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/tree/Breaking-the-Black-Box-ML/prediction)
 
-Results (Figure 3 and 4 from the Manuscript) can be found in [prediction/Results](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/tree/Breaking-the-Black-Box-ML/Results).
+Results (Figure 3 and 4 from the Manuscript) can be found in [Results](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/tree/Breaking-the-Black-Box-ML/Results).
 
 Training Data and model predictions are available upon request
 
