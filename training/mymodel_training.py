@@ -80,7 +80,7 @@ class Model(object):
         if self.train_mode == False:
             self.sess = tf.Session()
             saver = tf.train.Saver()
-            saver.restore(sess, "/home/lizhi/documents/opioids_AI/LSTM network/training/saved_model/mymodel-154")
+            saver.restore(sess, "/training/saved_model/mymodel-1")
             # code to load test data
             xtest =
             ytest =
@@ -223,7 +223,7 @@ if __name__ == "__main__":
 
 
     train_mode = True
-    mymodel = Model("savedoriginal_model", train_mode=train_mode, input_dim=15, T=961,batch_size=256)
+    mymodel = Model("savedoriginal_model3", train_mode=train_mode, input_dim=15, T=961,batch_size=256)
     if train_mode == True:
         mymodel.train(train_set, valid_set, maxEpoch=500)
             
