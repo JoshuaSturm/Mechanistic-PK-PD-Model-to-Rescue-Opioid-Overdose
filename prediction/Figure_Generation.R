@@ -1,16 +1,6 @@
 
-#---- Script to Combine original/mechanistic predictions to produce Figure 3 and 4
+#---- Script to Combine original/mechanistic predictions to produce Figure 3
 #---- John Mann
-
-
-times<-c(seq(0,300,1),seq(305,3600,5))
-
-
-# Read in necessary data
-All_real<-read.csv("data/real_data.csv") #Time course outputs from mechanistic simulations
-All_orig<-read.csv("data/original_pred_data_2.csv") # Time course outputs from standard deep learning model
-All_mech<-read.csv("data/mechanistic_pred_data_a.csv") # Time course outputs from mechanistically-inspired deep learning model
-
 
 
 mech_loss<-read.table("../training/save_j1/lossmech.txt") #Error values mech deep learning
@@ -40,7 +30,7 @@ p1<-ggplot(data=mech_g,aes(x=times,y=Training_error,color=model))+geom_point()+
 		labs(color = "Model Type")+
 		theme(legend.position=c(.75,.75))
 
-ggsave("Results/Manuscript_training_time.pdf",p1)
+ggsave("../Results/Figure3_time.pdf",p1)
 times_11<-seq(1,88,1)
 mech_g<-data.frame(cbind(times_11,mech_loss[1:length(times_11),1]))
 orig_g<-data.frame(cbind(times_11,orig_loss[1:length(times_11),1]))
@@ -59,7 +49,7 @@ p2<-ggplot(data=mech_g,aes(x=times,y=Training_error,color=model))+geom_point()+
 		#labs(color = "Model Type")+
 		theme(legend.position="none")
 
-ggsave("Results/Manuscript_training_epochs.pdf",p2)
+ggsave("../Results/Figure_3_epoch.pdf",p2)
 
 library(gridExtra)
 library(grid)
@@ -68,6 +58,6 @@ GA<-grid.arrange(p1,p2, ncol=1,nrow=2,
 		left="Training Error")
 
 
-ggsave("Results/Combine_grid.pdf",GA,height=6,width=10)
+ggsave("../Results/Figure_3.pdf",GA,height=6,width=10)
 
 
