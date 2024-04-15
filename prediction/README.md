@@ -1,7 +1,7 @@
 
 ## Model Predictions and Results
 
-[Figure 3]() Results were generated using the comparison of training error for the black box and mechanistic models as seen in [Figure_Generation.R]()
+[Figure 3](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/blob/Breaking-the-Black-Box-ML/Results/Figure_3.pdf) Results were generated using the comparison of training error for the black box and mechanistic models as seen in [Figure_Generation.R](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/blob/Breaking-the-Black-Box-ML/prediction/Figure_Generation.R)
 
 The mechanistic model outperformed the black model on both a per epoch and time course basis. 
 
