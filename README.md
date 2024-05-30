@@ -1,5 +1,5 @@
 # Benzene Risk Assessment 
-R shiny code to run simulations to compare different neural network methodologies
+R shiny code to calculate population level cancer risk due to benzene contamination following sunscreen application
 
 # Authors
 
