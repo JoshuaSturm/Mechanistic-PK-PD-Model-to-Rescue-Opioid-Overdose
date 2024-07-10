@@ -1,0 +1,44 @@
+	output$description <- renderText({
+				text <- switch(input$Parameter,
+						"Body Weight" = paste('Body weight distributions were derived from the National Center for Health Statistics: Vital and Health Statistics report:',  
+						'Fryar CD, Carroll MD, Gu Q, Afful J, Ogden CL. Anthropometric reference data for children and adults: United States, 2015–2018. National Center for Health Statistics. Vital Health Stat 3(46). 2021.'
+						'The Default distribution is for adult females aged 20 and older with mean of 77.5(+/-46.23)',
+						'For adult males age 20 and older use a normal distribution with mean of 90.6(+/-44.9) kg' ,sep ="\n"),
+						"Skin Percentage" = paste("Distribution for Percentage of skin coverage was take from Carrao et al:",
+							"Carrao, A. M., Schmitt, C. N., & Dyer, S. D. (2023). Repurposing consumer sunscreen habits and practices survey data to guide the development of UV filter environmental exposure models and risk assessments. International Journal of Cosmetic Science, 45(S1), 93–100. https://doi.org/10.1111/ics.12899 ",
+							"Default normal distribution has a mean of 62.8 (+/-15) percent", sep="\n" ),
+						"Skin Area" = paste("Total body surface area are derived from the same study as the Skin coverage data:",
+								"Carrao, A. M., Schmitt, C. N., & Dyer, S. D. (2023). Repurposing consumer sunscreen habits and practices survey data to guide the development of UV filter environmental exposure models and risk assessments. International Journal of Cosmetic Science, 45(S1), 93–100. https://doi.org/10.1111/ics.12899 ",
+								"Default normal distribution has a mean of 1.87 (+/-.299) meters squared",sep="\n"),
+),
+						"Density" = paste("A variety of sources are available for density of distribution. Here the default distribution is derived from Neale et al:",
+						"Neale, R., Williams, G., & Green, A. (2002). Application Patterns Among Participants Randomized to Daily Sunscreen Use in a Skin Cancer Prevention Trial. In Archives of Dermatology (Vol. 138, Issue 10). American Medical Association (AMA). https://doi.org/10.1001/archderm.138.10.1319",
+						"The mean of the normal distribution is .99 (+/-.0426) mg/cm2",
+						"Application density can vary wildly across route of administration with the highest degree of variability estimated through aerosol products", sep="\n"
+),
+						"Daily Frequency"="Uniform distribution ranging from 1 to 4 times per day",
+						"Annual Frequency"=paste("The number of sunscreen use days per year depends on many demographic factors and does not appear to be normally distributed. As such the default uniform distribution is derived from the range in Carrao et al:",
+						"The default range is between 7 and 50 sunscreen use days per year", sep ="\n"
+),
+						"Life time risk"=paste("The lifetime risk associated with benzene exposure was taken from the IRIS Chemical Assessment Summary for benzene:",
+						"US EPA IRIS Chemical Assessment Summary Benzene; CASRN 71-43-2",
+						The default uniform range is 2.2e-6 to 7.8e-6 unit risk", sep = "\n"
+
+),
+						"Concentration"=paste("Benzene concentration in sunscreen differs across products and formulations However a variety of products were tested as part of the Health Hazard Evaluation of sunscreen products in 2021",
+						"We included normal distributions for multiple sunscreen products found to have a concentration greater than 2 ppm",
+						"The default distribution is: Ultra Sheer Weightless Sunscreen Spray, SPF 100+ mean (+/-SD%) = 6.26 (+/-7%)",
+						"Ultra Sheer Weightless Sunscreen Spray, SPF 70 mean (+/-SD%) = 5.96 (+/-7%)",
+						"Beach Defense Spray Body Sunscreen SPF 50 mean (+/-SD%) = 3.52 (+/-3%), sep="\n"
+),
+						"Absorption"=paste("The default Benzene Absorption distribution is taken from the palm data of Modjtahedi and Maibach:",
+						"Modjtahedi, B. S., & Maibach, H. I. (2008). In vivo percutaneous absorption of benzene in man: Forearm and palm. In Food and Chemical Toxicology (Vol. 46, Issue 3, pp. 1171–1174). Elsevier BV. https://doi.org/10.1016/j.fct.2007.11.014",
+						"mean (+/-SD) of the default normal distribution is .13 (+/-.04) percent",
+						"The distribution for the forearm application is .07(+/-.04) percent"
+)				
+				
+				
+				)
+				paste(text, "")
+			})
+

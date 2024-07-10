@@ -1,0 +1,622 @@
+{
+    "contaminants" : 
+    [
+        {
+            "name" : "benzene",
+            "routes" :
+            [
+                {
+                    "type" : "sunscreen",
+                    "models" : 
+                    [
+                        {
+                            "model" : "Extrapolation from Lifetime Exposure to Benzene in the Air (EPA IRIS 2000)",
+                            "distributions" : [{"distribution" : "Experimentally derived distributions"}, {"distribution" : "Prior assumptions (ICH Q3C)"}, {"distribution" : "Bayesian distributions"}],
+                            "groups" : 
+                            [
+                                {
+                                    "group" : "Dose Response Model Parameters",
+                                    "pars" : 
+                                    [
+                                        {
+                                           "par" : "Lifetime Risk of Exposure to 1 unit of Benzene in the Air",
+                                           "unit" : "1 unit = 1 μg/m^3",
+                                           "suffix" : "e-6",
+                                           "source"  : "The lifetime risk associated with benzene exposure was taken from the IRIS Chemical Assessment Summary for benzene:<br>US EPA IRIS Chemical Assessment Summary Benzene; CASRN 71-43-2<br>The default uniform range is 2.2e-6 to 7.8e-6 unit risk",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 400,
+                                           "normal.mean.init" : 10,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 20,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,                               
+            
+                                           "log_normal.mean.min" : 0.1,
+                                           "log_normal.mean.max" : 400,
+                                           "log_normal.mean.init" : 10,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 20,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1,  
+            
+                                           "uniform.range.min" : 1.1, 
+                                           "uniform.range.max" : 15,
+                                           "uniform.init.min" : 2.2,
+                                           "uniform.init.max" : 7.8,
+                                           "uniform.step.blank" : 0.1
+                                            
+                                    
+                                        }  
+                                    ]
+                                },
+                                {
+                                    "group" : "Inhalation Model Parameters",
+                                    "pars" : 
+                                    [
+                                        {
+                                           "par" : "Benzene Absorption (inhaled)",
+                                           "unit" : "%",
+                                           "source"  : "A normal distribution with a mean of 48.5% and standard deviation of 2.2% (red line) was fit to data found in literature.<br>Additionally, a Bayesian approach was implemented to combine the limited literature data (shown in the histogram below) with the prior belief that inhaled absorption is near 100% into a distribution. A normal distribution with a mean of 97.5% and a standard deviation of 1.276% (blue line) was used to represent the prior belief. The resulting posterior distribution is a normal distribution with a mean of 73.3% and and a standard deviation of 2.7% (black line).",
+                                           "dist_to_use" : "normal",
+                                           "source_image_path" : "inhaled_absorption.png",
+                                     
+                                           "Experimentally_derived_distributions.dist_to_use" : "normal",
+                                           "Experimentally_derived_distributions.mean.init" : 48.5,
+                                           "Experimentally_derived_distributions.sd.init" : 2.2,
+                                           
+                                           "Prior_assumptions_ICH_Q3C.dist_to_use" : "uniform",
+                                           "Prior_assumptions_ICH_Q3C.init.min" : 100,
+                                           "Prior_assumptions_ICH_Q3C.init.max" : 100,
+                                           
+                                           "Bayesian_distributions.dist_to_use" : "normal",
+                                           "Bayesian_distributions.mean.init" : 73.3,
+                                           "Bayesian_distributions.sd.init" : 2.7,
+                                                                                      
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 48.5,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 100,
+                                           "normal.sd.init" : 2.2,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 50,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 100,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 50,
+                                           "uniform.init.max" : 50,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                        },
+                                        {
+                                           "par" : "Minute Ventilation",
+                                           "unit" : "L/min",
+                                           "source"  : "Model parameter from Rothe et al., 2011. However, in Rothe et al., 2011 it is labeled as the breathing rate. The Sponsor's HHE used a value of 13 L/min. We choose a uniform distribution ranging from 6 L/min - 12 L/min as the default.<br>Rothe H, Fautz R, Gerber E, Neumann L, Rettinger K, Schuh W, Gronewold C. Special aspects of cosmetic spray safety evaluations: principles on inhalation risk assessment. Toxicol Lett. 2011 Aug 28;205(2):97-104. doi:<a href='https://doi.org/10.1016/j.toxlet.2011.05.1038' target='_blank'>10.1016/j.toxlet.2011.05.1038</a>",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 6,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 0.1,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 6,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 0.1,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 6,
+                                           "uniform.init.max" : 12,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                        },
+                                        {
+                                           "par" : "Exposure time (near-field)",
+                                           "unit" : "min",
+                                           "source"  : "Model parameter from Rothe et al., 2011. The exposure time of benzene in the near-field zone is reported to be 2 minutes in the Sponsor's HHE.<br>Rothe H, Fautz R, Gerber E, Neumann L, Rettinger K, Schuh W, Gronewold C. Special aspects of cosmetic spray safety evaluations: principles on inhalation risk assessment. Toxicol Lett. 2011 Aug 28;205(2):97-104. doi:<a href='https://doi.org/10.1016/j.toxlet.2011.05.1038' target='_blank'>10.1016/j.toxlet.2011.05.1038</a>",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 2,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 0.1,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 2,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 0.1,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 2,
+                                           "uniform.init.max" : 2,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                        },
+                                        {
+                                           "par" : "Distribution volume (near-field)",
+                                           "unit" : "m^3",
+                                           "source"  : "Model parameter from Rothe et al., 2011. The distribution volume of the near-field zone is reported to be 1 m^3 in the Sponsor's HHE.<br>Rothe H, Fautz R, Gerber E, Neumann L, Rettinger K, Schuh W, Gronewold C. Special aspects of cosmetic spray safety evaluations: principles on inhalation risk assessment. Toxicol Lett. 2011 Aug 28;205(2):97-104. doi:<a href='https://doi.org/10.1016/j.toxlet.2011.05.1038' target='_blank'>10.1016/j.toxlet.2011.05.1038</a>",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 1,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 0.1,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 1,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 0.1,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 1,
+                                           "uniform.init.max" : 1,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                        }, 
+                                        {
+                                           "par" : "Exposure time (far-field)",
+                                           "unit" : "min",
+                                           "source"  : "Model parameter from Rothe et al., 2011. The exposure time of benzene in the far-field zone is reported to be 10 minutes in the Sponsor's HHE.<br>Rothe H, Fautz R, Gerber E, Neumann L, Rettinger K, Schuh W, Gronewold C. Special aspects of cosmetic spray safety evaluations: principles on inhalation risk assessment. Toxicol Lett. 2011 Aug 28;205(2):97-104. doi:<a href='https://doi.org/10.1016/j.toxlet.2011.05.1038' target='_blank'>10.1016/j.toxlet.2011.05.1038</a>",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 10,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 0.1,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 10,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 0.1,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" :10,
+                                           "uniform.init.max" : 10,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                        },
+                                        {
+                                           "par" : "Distribution volume (far-field)",
+                                           "unit" : "m^3",
+                                           "source"  : "Model parameter from Rothe et al., 2011. The distribution volume of the far-field zone is reported to be 10 m^3 in the Sponsor's HHE.<br>Rothe H, Fautz R, Gerber E, Neumann L, Rettinger K, Schuh W, Gronewold C. Special aspects of cosmetic spray safety evaluations: principles on inhalation risk assessment. Toxicol Lett. 2011 Aug 28;205(2):97-104. doi:<a href='https://doi.org/10.1016/j.toxlet.2011.05.1038' target='_blank'>10.1016/j.toxlet.2011.05.1038</a>",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 10,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 0.1,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 10,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 0.1,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 10,
+                                           "uniform.init.max" : 10,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                        } 
+                                    ]
+                                },
+                                {
+                                    "group" : "Dermal Absorption Model Parameters",
+                                    "pars" : 
+                                    [
+                                        {
+                                           "par" : "Benzene Absorption (dermal)",
+                                           "unit" : "%",
+                                           "source"  : "A log-normal distribution with a mean of 6.1% and standard deviation of 36.2% (red line) was fit to data found in literature.<br>Additionally, a Bayesian approach was implemented to combine the limited literature data (shown in the histogram below) with the prior belief that dermal absorption is near 100% into a distribution. A normal distribution with a mean of 97.5 and a standard deviation of 1.276 (blue line) was used to represent the prior belief. The resulting posterior distribution is a normal distribution with a mean of 44.8% and and a standard deviation of 6.3% (black line).",
+                                           "source_image_path" : "benzene_absorption_dist.png",
+                                           "dist_to_use" : "log_normal",
+                                           
+                                           "Experimentally_derived_distributions.dist_to_use" : "log_normal",
+                                           "Experimentally_derived_distributions.mean.init" : 6.1,
+                                           "Experimentally_derived_distributions.sd.init" : 36.2,
+                                           
+                                           "Prior_assumptions_ICH_Q3C.dist_to_use" : "uniform",
+                                           "Prior_assumptions_ICH_Q3C.init.min" : 100,
+                                           "Prior_assumptions_ICH_Q3C.init.max" : 100,
+                                           
+                                           "Bayesian_distributions.dist_to_use" : "normal",
+                                           "Bayesian_distributions.mean.init" : 44.8,
+                                           "Bayesian_distributions.sd.init" : 6.3,
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 44.8,
+                                           "normal.mean.step" : 0.01,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 100,
+                                           "normal.sd.init" : 6.3,
+                                           "normal.sd.step" : 0.1,
+                                           
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 6.1,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 100,
+                                           "log_normal.sd.init" : 36.2,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0.01, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 0.01,
+                                           "uniform.init.max" : 0.1,
+                                           "uniform.step.blank" : 0.01
+                                            
+                                            
+                                        } 
+                                    ]
+                                },
+                                {
+                                    "group" : "Product Characteristics",
+                                    "pars" : 
+                                    [
+                                        {
+                                           "par" : "Application Density",
+                                           "unit" : "mg/cm^2",
+                                           "source"  : "A variety of sources are available for density of distribution. Here the default distribution is derived from Carrao et al., 2023:<br>Carrao, A.M., Coleman, J.C., Guo, J.J. et al. A novel online survey approach designed to measure consumer sunscreen application thickness—implications for estimating environmental emissions. J Expo Sci Environ Epidemiol (2023). <a href='https://doi.org/10.1038/s41370-023-00608-z' target='_blank'>https://doi.org/10.1038/s41370-023-00608-z</a><br>Data based on > 4000 adults from US. A 2nd study (in the same paper) used > 2000 adults to get similar distribution. Application thickness on arms also reported, but with lower values.<br>We chose the higher values (face application) with a log-normal distribution (mean 3 and Std 2.99 mg/cm^2). The plot below shows the data from Carrao et al., 2023 and the probability density of the default distribution<br>Application density can vary wildly across route of administration with the highest degree of variability estimated through aerosol products",
+                                           "source_image_path" : "application_density.png",
+                                           "dist_to_use" : "log_normal",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 10,
+                                           "normal.mean.init" : 0.99,
+                                           "normal.mean.step" : 0.01,
+                                           "normal.sd.min" : 0.01,
+                                           "normal.sd.max" : 1,
+                                           "normal.sd.init" : 0.04,
+                                           "normal.sd.step" : 0.01,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 10,
+                                           "log_normal.mean.init" : 3.00,
+                                           "log_normal.mean.step" : 0.01,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 10,
+                                           "log_normal.sd.init" : 2.90,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0.12, 
+                                           "uniform.range.max" : 18,
+                                           "uniform.init.min" : 0.24,
+                                           "uniform.init.max" : 11.2,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                            
+                                            
+                                        },
+                                        {
+                                           "par" : "Percentage of Skin Coverage",
+                                           "unit" : "fractional",
+                                           "source"  : "Distribution for Percentage of skin coverage was taken from Carrao et al:<br>Carrao, A. M., Schmitt, C. N., & Dyer, S. D. (2023). Repurposing consumer sunscreen habits and practices survey data to guide the development of UV filter environmental exposure models and risk assessments. International Journal of Cosmetic Science, 45(S1), 93–100. <a href='https://doi.org/10.1111/ics.12899' target='_blank'>https://doi.org/10.1111/ics.12899</a><br>Default normal distribution has a mean of 62.8 (+/-15) percent",
+                                           "dist_to_use" : "normal",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 1,
+                                           "normal.mean.init" : 0.63,
+                                           "normal.mean.step" : 0.01,
+                                           "normal.sd.min" : 0.01,
+                                           "normal.sd.max" : 0.5,
+                                           "normal.sd.init" : 0.15,
+                                           "normal.sd.step" : 0.01,
+                                            
+                                           "log_normal.mean.min" : 0.1,
+                                           "log_normal.mean.max" : 1,
+                                           "log_normal.mean.init" : 0.63,
+                                           "log_normal.mean.step" : 0.01,
+                                           "log_normal.sd.min" : 0.01,
+                                           "log_normal.sd.max" : 0.5,
+                                           "log_normal.sd.init" : 0.15,
+                                           "log_normal.sd.step" : 0.01,  
+                                                                                     
+                                           "uniform.range.min" : 0.07, 
+                                           "uniform.range.max" : 1,
+                                           "uniform.init.min" : 0.13,
+                                           "uniform.init.max" : 0.88,
+                                           "uniform.step.blank" : 0.01
+                                                
+                                            
+                                        },
+                                        {
+                                           "par" : "Daily Frequency",
+                                           "unit" : "times per day",
+                                           "source"  : "Uniform distribution ranging from 1 to 4 times per day",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 400,
+                                           "normal.mean.init" : 10,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 20,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1, 
+                                            
+                                           "log_normal.mean.min" : 0.1,
+                                           "log_normal.mean.max" : 400,
+                                           "log_normal.mean.init" : 10,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 20,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1,
+                                            
+                                           "uniform.range.min" : 0.5, 
+                                           "uniform.range.max" : 8,
+                                           "uniform.init.min" : 1,
+                                           "uniform.init.max" : 4,
+                                           "uniform.step.blank" : 0.1
+                                            
+                                            
+                                        },
+                                        {
+                                           "par" : "Annual Frequency",
+                                           "unit" : "days per year",
+                                           "source"  : "The number of sunscreen use days per year depends on many demographic factors and does not appear to be normally distributed. As such the default uniform distribution is derived from the range in Carrao et al:<br>Carrao, A. M., Schmitt, C. N., & Dyer, S. D. (2023). Repurposing consumer sunscreen habits and practices survey data to guide the development of UV filter environmental exposure models and risk assessments. International Journal of Cosmetic Science, 45(S1), 93–100. <a href='https://doi.org/10.1111/ics.12899' target='_blank'>https://doi.org/10.1111/ics.12899</a><br>Data based on > 11,000 adults from US and Canada to estimate days per year sunscreen (shown below) was used. On one hand, the distribution is skewed towards lower values. On the other hand, the surrogate marker 'days at bodies of water' may underestimate the actual days sunscreen was used.<br>We chose a uniform distribution between 7 and 50 days per year as the most probable distribution of sunscreen use in North America.",
+                                           "source_image_path" : "annual_frequency.png",
+                                           "dist_to_use" : "uniform",
+                                          
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 400,
+                                           "normal.mean.init" : 10,
+                                           "normal.mean.step": 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 20,
+                                           "normal.sd.init" : 1, 
+                                           "normal.sd.step": 0.1,
+                                            
+                                           "log_normal.mean.min" : 0.1,
+                                           "log_normal.mean.max" : 400,
+                                           "log_normal.mean.init" : 10,
+                                           "log_normal.mean.step": 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 20,
+                                           "log_normal.sd.init" : 1, 
+                                           "log_normal.sd.step": 0.1,
+                                            
+                                           "uniform.range.min" : 1, 
+                                           "uniform.range.max" : 365,
+                                           "uniform.init.min" : 7,
+                                           "uniform.init.max" : 50,
+                                           "uniform.step.blank" : 1
+                                            
+                                        },
+                                        
+                                        {
+                                           "par" : "Benzene Concentration",
+                                           "unit" : "ppm",
+                                           "source"  : "Benzene concentration in sunscreen differs across products and formulations<br>Initially JJCI (Johnson & Johnson Consumer Inc.) reported that benzene was in the range of 11.2 – 23.6 ppm; but on retesting it was revised to 1.3-13.2 ppm (using new mass spectrometry HS-GC-MS)<br>Thus the default uniform range is 1.3-13.2 ppm",
+                                           "dist_to_use" : "uniform",
+                                          
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 15,
+                                           "normal.mean.init" : 6.26,
+                                           "normal.mean.step" : 0.01,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 5,
+                                           "normal.sd.init" : 0.44,
+                                           "normal.sd.step": 0.01,
+                                            
+                                           "log_normal.mean.min" : 0.1,
+                                           "log_normal.mean.max" : 15,
+                                           "log_normal.mean.init" : 6.26,
+                                           "log_normal.mean.step" : 0.01,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 5,
+                                           "log_normal.sd.init" : 0.44,
+                                           "log_normal.sd.step": 0.01,
+                                            
+                                           "uniform.range.min" : 0.65, 
+                                           "uniform.range.max" : 16,
+                                           "uniform.init.min" : 1.3,
+                                           "uniform.init.max" : 13.2,
+                                           "uniform.step.blank" : 0.01
+                                            
+                                            
+                                        },
+                                        {
+                                           "par" : "Evaporated Benzene",
+                                           "unit" : "%",
+                                           "source"  : "The percentage of benzene remaining on skin after 30min was measured to be 1.4% by Hui et al:<br>Hui X, Wester RC, Barbadillo S, Cashmore A, Maibach HI. (2009). In vitro percutaneous absorption of benzene in human skin. Cutan Ocular Toxicol 28:65–70. <a href='https://doi.org/10.1080/15569520902826609' target='_blank'>https://doi.org/10.1080/15569520902826609</a><br>From this, we take the percentage of benzene evaporated into the open air to be inhaled as 98.6%.",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 50,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 100,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 50,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 100,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 98.6,
+                                           "uniform.init.max" : 98.6,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                            
+                                            
+                                        },
+                                        {
+                                           "par" : "Benzene Available for Dermal Absorption",
+                                           "unit" : "%",
+                                           "source"  : "The percentage of benzene remaining on skin after 30min was measured to be 1.4% by Hui et al:<br>Hui X, Wester RC, Barbadillo S, Cashmore A, Maibach HI. (2009). In vitro percutaneous absorption of benzene in human skin. Cutan Ocular Toxicol 28:65–70. <a href='https://doi.org/10.1080/15569520902826609' target='_blank'>https://doi.org/10.1080/15569520902826609</a>",
+                                           "dist_to_use" : "uniform",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 100,
+                                           "normal.mean.init" : 50,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 100,
+                                           "normal.sd.init" : 1,
+                                           "normal.sd.step" : 0.1,
+            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 100,
+                                           "log_normal.mean.init" : 50,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 100,
+                                           "log_normal.sd.init" : 1,
+                                           "log_normal.sd.step" : 0.1, 
+            
+                                           "uniform.range.min" : 0, 
+                                           "uniform.range.max" : 100,
+                                           "uniform.init.min" : 1.4,
+                                           "uniform.init.max" : 1.4,
+                                           "uniform.step.blank" : 0.01
+                                           
+                                            
+                                            
+                                        }
+                                    ]
+                                },
+                                {
+                                    "group" : "Population Characteristics",
+                                    "pars" : 
+                                    [
+                                            {
+                                           "par" : "Body weight",
+                                           "unit" : "kg",
+                                           "source"  : "Body weight distributions were derived from the National Center for Health Statistics: Vital and Health Statistics report:<br>Fryar CD, Carroll MD, Gu Q, Afful J, Ogden CL. Anthropometric reference data for children and adults: United States, 2015–2018. National Center for Health Statistics. Vital Health Stat 3(46). 2021.<br>The Default distribution is for adult females aged 20 and older with mean of 77.5(+/-46.23)<br>For adult males age 20 and older use a normal distribution with mean of 90.6(+/-44.9) kg",
+                                           "dist_to_use" : "log_normal",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 200,
+                                           "normal.mean.init" : 77.5,
+                                           "normal.mean.step" : 0.1,
+                                           "normal.sd.min" : 1,
+                                           "normal.sd.max" : 100,
+                                           "normal.sd.init" : 46.2,
+                                           "normal.sd.step" : 0.1,
+                                            
+                                           "log_normal.mean.min" : 0,
+                                           "log_normal.mean.max" : 200,
+                                           "log_normal.mean.init" : 77.5,
+                                           "log_normal.mean.step" : 0.1,
+                                           "log_normal.sd.min" : 1,
+                                           "log_normal.sd.max" : 100,
+                                           "log_normal.sd.init" : 46.2,
+                                           "log_normal.sd.step" : 0.1,                                  
+                                       
+                                           "uniform.range.min" : 40, 
+                                           "uniform.range.max" : 150,
+                                           "uniform.init.min" : 50,
+                                           "uniform.init.max" : 100,
+                                           "uniform.step.blank" : 0.1
+        
+                                        },
+                                        {
+                                           "par" : "Surface Area",
+                                           "unit" : "m^2",
+                                           "source" : "Total body surface area are derived from the same study as the Skin coverage data:<br>Carrao, A. M., Schmitt, C. N., & Dyer, S. D. (2023). Repurposing consumer sunscreen habits and practices survey data to guide the development of UV filter environmental exposure models and risk assessments. International Journal of Cosmetic Science, 45(S1), 93–100. <a href='https://doi.org/10.1111/ics.12899' target='_blank'>https://doi.org/10.1111/ics.12899</a><br>Default normal distribution has a mean of 1.87 (+/-.299) meters squared",
+                                           "dist_to_use" : "normal",
+                                           
+                                           "normal.mean.min" : 0,
+                                           "normal.mean.max" : 5,
+                                           "normal.mean.init" : 1.87,
+                                           "normal.mean.step" : 0.01,
+                                           "normal.sd.min" : 0.1,
+                                           "normal.sd.max" : 2,
+                                           "normal.sd.init" : 0.30,
+                                           "normal.sd.step" : 0.01,          
+            
+                                           "log_normal.mean.min" : 0.1,
+                                           "log_normal.mean.max" : 5,
+                                           "log_normal.mean.init" : 1.87,
+                                           "log_normal.mean.step" : 0.01,
+                                           "log_normal.sd.min" : 0.1,
+                                           "log_normal.sd.max" : 2,
+                                           "log_normal.sd.init" : 0.30,
+                                           "log_normal.sd.step" : 0.01,   
+            
+                                           "uniform.range.min" : 0.8, 
+                                           "uniform.range.max" : 3,
+                                           "uniform.init.min" : 1.4,
+                                           "uniform.init.max" : 2.4,
+                                           "uniform.step.blank" : 0.01
+                                            
+                                        }
+                                    ]
+                                }
+                            ]
+                        }       
+                    ]
+                }
+            ]
+        }
+    ]
+}
