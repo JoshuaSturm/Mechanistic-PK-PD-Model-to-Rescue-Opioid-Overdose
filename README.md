@@ -1,42 +1,73 @@
+# Scripts to generate the figures and tables of  _Towards Developing Alternative Opioid Antagonists for Treating Community Overdose – A model-based evaluation of important pharmacological attributes_ 
+**Anik Chaturbedi, John Mann, Zhihua Li**
 
+Division of Applied Regulatory Science, Office of Clinical Pharmacology, Office of Translational Sciences, Center for Drug Evaluation and Research, Food & Drug Administration, Silver Spring, Maryland, USA
 
-# Translational Model to Assess the Repeat Dosing of Naloxone and Fentanyl Overdose
+## 1. Brief description of models and parameters
+### 1a. Models
+Model for simulating **intravenous opioid** overdose and **intranasal naloxone** administration:  _models/modelIN_2Tr1C_
 
-R code to utilize mechanistic PK-PD model of opioid overdose for simulation of overdose scenarios and cardiac arrest with repeat naloxone dosing.
+Model for simulating **intravenous opioid** overdose and **intranasal nalmefene** administration:  _models/modelIN_2Tr1C1P_RepeatedDosing_
 
-# Authors
+Model for simulating **transmucosal opioid** overdose and **intranasal naloxone** administration:  _models/model_TM_2Tr1C1P_IN_2Tr1C_
 
-Anik Chaturbedi,  Shilpa Chakravartula, John Mann, Mohammadreza Samieegohar, Zhihua Li
+Model for simulating **transmucosal opioid** overdose and **intranasal nalmefene** administration:  _models/model_TM_2Tr1C1P_IN_2Tr1C1P_RepeatedDosing_
 
+In each of these folders  _delaymymod_  files contain the model equations described in detail in [Mann et al.](https://ascpt.onlinelibrary.wiley.com/doi/10.1002/cpt.2696) and other files serve as auxillary files. 
 
-# Requirements
+### 1b. Parameters
+The parameters for a "typical" subject can be found in  _parameters/optimalParameters_ . 
+The opioid (fentanyl and carfentanil) pharmacokinetic and receptor binding parameters are available in  _parameters/optimalParameters/opioid_ .
+Pharmacokinetic parameters and receptor binding parameters for IN naloxone and IN nalmefene are provided in  _parameters/optimalParameters/antagonist_ . 
+The parameters representing various physiological variables which are used in the physiological and ventilatory component of the model are provided in  _parameters/optimalParameters/physiological/physiologicalParameters_ . 
+The pharmacodynamic parameters for a chronic opioid user is given in  _parameters/optimalParameters/subject/chronic_ . 
 
-This code was developed with R version 3.6.0 and uses the following packages:
-*	optparse (version 1.4.4)
-*	ggplot2 (version 3.1.1)
-*	deSolve (version 1.10-5)
-*	gridExtra (version 2.2.1)
-*	FME (version 1.3.6.1)
-*	patchwork (version 1.1.1)
+The corresponding parameters for all of the 2000 subjects in the virtual population are available in  _parameters/populationParameters_ .
+The opioid pharmacokinetic and receptor binding parameters are available in  _parameters/populationParameters/opioid_ . 
+Similar to the "typical" subject, fentanyl pharmacokinetic parameters are modified to match a longer half-life for carfentanil. 
+The pharmacokinetic and receptor binding parameters for IN naloxone and IN nalmefene are available in  _parameters/populationParameters/antagonist_ . 
 
-# Codes
+Additional simulation related parameters used both for simulating the "typical" subject as well as the virtual population are defined in  _input/simulationParameters_ .
 
-Codes are provided in [pharmacodynamicFigures](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/tree/Intranasal-Naloxone-Repeat-Dosing-Strategies-and-Fentayl-Overdose/pharmacodynamicFigures) and in [Naloxone_Clinical_Figure4A](https://github.com/FDA/Mechanistic-PK-PD-Model-to-Rescue-Opioid-Overdose/tree/Intranasal_Naloxone_Repeat_Dosing_and_Fentanyl_Overdose/Naloxone_Clinical_Figure4A) for a subset of the pharmacodynamic and pharmacokinetic figures respectively. 
+### 1c. Clinical data
+The data used for plotting are in  _data_ . Note:  _ data/nalmefeneCIndividualSubjectData.csv_  and  _ data/naloxoneIndividualSubjectData.csv_  were digitized from Figure 2.
 
+## 2. Workflow
+### 2a. Pharmacokinetics
+#### 2a1. Figure 2 Pharmacokinetics of the various µ-receptor antagonist formulations studied in this work. 
+1. run SimulateVirtualPopulationsAntagonistPKOnly.sh (OR simulateVirtualSubject.R)
+2. run SimulateVirtualSubjectsAntagonistPKOnly.sh (OR simulateVirtualSubject.R)
+2. run PlottingAntagonistPKTimeCourseAndPKParameters.sh (or plottingAntagonistPKTimecourseAndPKParameters.R)
 
-## References
+### 2b. IV opioid overdose simulations
+#### 2b1. Figure 3 Simulated antagonist induced reversal for various scenarios of opioid overdose with intravenous fentanyl and carfentanil.
+1. run SimulateVirtualSubjects.sh (or simulateVirtualSubject.R)
+2. run PlotVirtualSubjects.sh
 
-1.	Yassen, A., et al., Mechanism-based PK/PD modeling of the respiratory depressant effect of buprenorphine and fentanyl in healthy volunteers. Clin Pharmacol Ther, 2007. 81(1): p. 50-8.
-2.	Chang, K.C., et al., Uncertainty Quantification Reveals the Importance of Data Variability and Experimental Design Considerations for in Silico Proarrhythmia Risk Assessment. Frontiers in Physiology, 2017. 8(917).
-3.	Algera, M.H., et al., Tolerance to Opioid-Induced Respiratory Depression in Chronic High-Dose Opioid Users: A Model-Based Comparison With Opioid-Naive Individuals. Clin Pharmacol Ther, 2020.
-4.	Minkowski, C.P., et al., Differential response to IV carfentanil in chronic cocaine users and healthy controls. Addict Biol, 2012. 17(1): p. 149-55.
-5.	US FDA label for naloxone hydrochloride injection 1988; Available from: https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=236349ef-2cb5-47ca-a3a5-99534c3a4996&type=display.
-6.	USFDA. Label for EVZIO Auto-Injector for intramuscular or subcutaneous use, 2 mg. 2016; Available from: https://www.accessdata.fda.gov/drugsatfda_docs/label/2016/209862lbl.pdf.
-7. Magosso, E., M. Ursino, and J.H. van Oostrom, Opioid-induced respiratory depression: a mathematical model for fentanyl. IEEE Trans Biomed Eng, 2004. 51(7): p. 1115-28.
-8.	Ursino, M., E. Magosso, and G. Avanzolini, An integrated model of the human ventilatory control system: the response to hypercapnia. Clin Physiol, 2001. 21(4): p. 447-64.
-9.	Ursino, M., E. Magosso, and G. Avanzolini, An integrated model of the human ventilatory control system: the response to hypoxia. Clin Physiol, 2001. 21(4): p. 465-77.
-10.	Stoeckel, H., et al., Plasma fentanyl concentrations and the occurrence of respiratory depression in volunteers. Br J Anaesth, 1982. 54(10): p. 1087-95.
-11.	Yassen, A., et al., Mechanism-based pharmacokinetic-pharmacodynamic modelling of the reversal of buprenorphine-induced respiratory depression by naloxone : a study in healthy volunteers. Clin Pharmacokinet, 2007. 46(11): p. 965-80.
-12.	NDEWS. Unintentional Fentanyl Overdoses in New Hampshire: An NDEWS HotSpot Analysis. 2017; Available from: https://ndews.org/wordpress/files/2020/07/ndews-hotspot-unintentional-fentanyl-overdoses-in-new-hampshire-final-09-11-17.pdf
-13.	Brockbals, L., et al., Time-Dependent Postmortem Redistribution of Opioids in Blood and Alternative Matrices. J Anal Toxicol, 2018. 42(6): p. 365-374.
+#### 2b2. Figure 4 Immediate antagonist induced recovery in the aftermath of various levels of opioid overdose with intravenous fentanyl and carfentanil in a virtual population.
+1. run SimulateVirtualPopulations.sh (or simulateVirtualSubject.R)
+2. run CalculatePopulationLevelCAMetrics.sh (or calculatePopulationLevelCAMetric.R)
+3. run multipleDoses.R
 
+### 2c. TM opioid overdose simulations
+#### 2c1. Figure 5 Simulated prevention of renarcotization induced respiratory depression in a typical subject.
+1. run SimulateVirtualSubjectsRenarcotization.sh (OR simulateVirtualSubject.R) 
+2. run PlotVirtualSubjectsRenarcotization.sh (OR plottingRenarcotization4Cases.R)
+
+#### 2c2. Figure S2 Plasma concentration of long exposure opioid formulation used here to simulate renarcotization.
+1. run MatchOpioidPlasmaConcentration.sh (or simulateVirtualSubject.R followed by  plottingRenarcotizationPlasmaConcentration.R)
+
+#### 2c3. Figure S3 Plasma concentration of the various antagonist formulations studied in this work in a “typical” subject.
+1. run SimulateVirtualSubjectsRenarcotization.sh (OR simulateVirtualSubject.R)
+2. run PlotVirtualSubjectsRenarcotization.sh (OR plottingRenarcotization4CasesAPC.R)
+
+#### 2c4. Table 1 Minute ventilation with various antagonist formulations (and without any antagonist) at different times after exposure to an opioid with slower absorption.
+1. run SimulateVirtualPopulationsRenarcotization.sh (or simulateVirtualSubject.R)
+2. run CalculatePopulationLevelMVMetricsRenarcotization.sh (or calculatePopulationLevelMVMetric.R)
+
+#### 2c5. Table S5 Plasma concentration for various antagonist formulations at different times, for the case of long-exposure opioid administration.
+1. run SimulateVirtualPopulationsRenarcotization.sh (or simulateVirtualSubject.R)
+2. run CalculatePopulationLevelAPCMetricsRenarcotization.sh (or calculatePopulationLevelAPCMetric.R)
+
+## 3. Requirements
+These codes were developed in R-4.4.1 and C.
