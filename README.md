@@ -30,7 +30,8 @@ The pharmacokinetic and receptor binding parameters for IN naloxone and IN nalme
 Additional simulation related parameters used both for simulating the "typical" subject as well as the virtual population are defined in  _input/simulationParameters_ .
 
 ### 1c. Clinical data
-The data used for plotting are in  _data_ . Note:  _ data/nalmefeneCIndividualSubjectData.csv_  and  _ data/naloxoneIndividualSubjectData.csv_  were digitized from Figure 2.
+The data used for plotting are in _data_. 
+Note:  _data/nalmefeneCIndividualSubjectData.csv_  and  _data/naloxoneIndividualSubjectData.csv_  were digitized from Figure 2.
 
 ## 2. Workflow
 ### 2a. Pharmacokinetics
